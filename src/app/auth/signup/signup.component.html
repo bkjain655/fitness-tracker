@@ -1,5 +1,5 @@
 <section class>
-  <form fxLayout="column" fxLayoutAlign="center center" #f="ngForm" (ngSubmit)="onSubmit(f)">
+  <form fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="15px" #f="ngForm" (ngSubmit)="onSubmit(f)">
     <mat-form-field>
       <input type="email" matInput placeholder="Your Email Id" ngModel name="email" email required #email="ngModel">
       <mat-error *ngIf="email.hasError('required')">Email is a mandatory field</mat-error>
@@ -23,7 +23,7 @@
       <mat-datepicker #picker></mat-datepicker>
       <mat-error *ngIf="birthdate.hasError('required')">Please enter your birthdate</mat-error>
     </mat-form-field>
-    <mat-checkbox ngModel name="agree" labelPosition="before" color="primary">Agree to terms and conditions</mat-checkbox>
-    <button type="submit" mat-raised-button color="primary">Submit</button>
+    <mat-checkbox ngModel name="agree" labelPosition="before" color="primary" required>Agree to terms and conditions</mat-checkbox>
+    <button type="submit" mat-raised-button color="primary" [disabled]="f.invalid">Submit</button>
   </form>
 </section>
